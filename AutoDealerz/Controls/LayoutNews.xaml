@@ -1,0 +1,285 @@
+﻿<UserControl x:Class="AutoDealerz.Controls.LayoutNews"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ValueConverters="clr-namespace:NhacCuaTui.SupportListview.ValueConverters"
+             xmlns:customcontrols="clr-namespace:Funny.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+             xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="TabStyle" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <VisualStateManager.VisualStateGroups>
+
+                                <VisualStateGroup x:Name="SelectionStates">
+
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentContainer" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="#405962" />
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ColorAnimation Duration="0"
+                                                            Storyboard.TargetName="grid"
+                                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                            To="#FF405962"
+                                                            d:IsOptimized="True" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0"
+                                                            Storyboard.TargetName="grid"
+                                                            Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)"
+                                                            To="#FF405962"
+                                                            d:IsOptimized="True" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="grid" Background="#FF1A4453">
+                                <ContentControl x:Name="ContentContainer"
+                                                Margin="{TemplateBinding Padding}"
+                                                Content="{TemplateBinding Content}"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                Foreground="White" />
+
+
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ValueConverters:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="#a0b9c2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ListBox x:Name="ImageBar"
+                     Grid.Row="0"
+                     DataContext="{Binding}"
+                     ItemContainerStyle="{StaticResource TabStyle}"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     SelectedIndex="{Binding SelectedIndex,
+                                             ElementName=MainPivot,
+                                             Mode=TwoWay}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <customcontrols:SplitPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBoxItem Width="120">
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Text="NEWS"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                </ListBoxItem>
+                <ListBoxItem Width="120">
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Text="DEAL" />
+                </ListBoxItem>
+                <ListBoxItem Width="120">
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Text="FACEBOOK" />
+                </ListBoxItem>
+                <ListBoxItem Width="120">
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Text="TWITTER" />
+                </ListBoxItem>
+            </ListBox>
+            <phone:Pivot x:Name="MainPivot"
+                         Grid.Row="1"
+                         SelectionChanged="MainPivot_SelectionChanged">
+                <phone:PivotItem>
+                    <ListBox x:Name="List_news"
+                             Margin="-12 -36 -12 0"
+                             SelectionChanged="List_news_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Width="480" Orientation="Vertical">
+                                    <Border Width="400"
+                                            Height="180"
+                                            Margin="24 24 24 0"
+                                            BorderBrush="#7F000000"
+                                            BorderThickness="2"
+                                            CornerRadius="5">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="/Images/small_default_car.png" Stretch="UniformToFill" />
+                                        </Border.Background>
+                                        <Image Margin="3"
+                                               Source="{Binding image_url}"
+                                               Stretch="Fill" />
+                                    </Border>
+
+                                    <Grid>
+                                        <TextBlock Margin="24 0"
+                                                   FontSize="25"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="Black"
+                                                   Text="{Binding news_title}"
+                                                   TextWrapping="Wrap" />
+
+                                        <TextBlock Margin="24 0"
+                                                   FontSize="25"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="Red"
+                                                   Text="{Binding news_title}"
+                                                   TextWrapping="Wrap"
+                                                   Visibility="{Binding recall_status,
+                                                                        Converter={StaticResource StringToVisibilityConverter}}" />
+                                    </Grid>
+                                    <TextBlock Margin="24 0"
+                                               FontSize="20"
+                                               Foreground="White"
+                                               Text="{Binding description}"
+                                               TextWrapping="Wrap" />
+                                    <TextBlock Margin="24 0"
+                                               FontSize="20"
+                                               Foreground="#222222"
+                                               Text="{Binding date_time}"
+                                               TextWrapping="Wrap" />
+                                    <Rectangle Height="1"
+                                               Margin="0 12 0 0"
+                                               Fill="Black" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </phone:PivotItem>
+                <phone:PivotItem>
+                    <StackPanel Margin="-12 -36 -12 0"
+                                VerticalAlignment="Center"
+                                Orientation="Vertical">
+                        <Grid Width="180"
+                              Height="180"
+                              Tap="Service_tap">
+                            <Image HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Source="/Images/news_services.png" />
+                            <Border Width="30"
+                                    Height="30"
+                                    Margin="12 10 50 0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="#FFB3C7CE"
+                                    BorderBrush="#7F000000"
+                                    BorderThickness="1"
+                                    CornerRadius="15">
+                                <TextBlock x:Name="TB_services_count"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Top"
+                                           FontSize="19"
+                                           Foreground="Black"
+                                           Text="" />
+                            </Border>
+                        </Grid>
+                        <Grid Width="180"
+                              Height="180"
+                              Margin="24"
+                              Tap="Sale_tap">
+                            <Image HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Source="/Images/news_sale.png" />
+                            <Border Width="30"
+                                    Height="30"
+                                    Margin="12 10 50 0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="#FFB3C7CE"
+                                    BorderBrush="#7F000000"
+                                    BorderThickness="1"
+                                    CornerRadius="15">
+                                <TextBlock x:Name="TB_sales_count"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Top"
+                                           FontSize="19"
+                                           Foreground="Black" />
+                            </Border>
+                        </Grid>
+                        <Grid Width="180"
+                              Height="180"
+                              Tap="Parts_tap">
+                            <Image HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Source="/Images/news_part.png" />
+                            <Border Width="30"
+                                    Height="30"
+                                    Margin="12 10 50 0"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Background="#FFB3C7CE"
+                                    BorderBrush="#7F000000"
+                                    BorderThickness="1"
+                                    CornerRadius="15">
+                                <TextBlock x:Name="TB_parts_count"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Top"
+                                           FontSize="19"
+                                           Foreground="Black" />
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </phone:PivotItem>
+                <phone:PivotItem>
+                    <phone:WebBrowser x:Name="Browser_face" Margin="-12 -36 -12 0" />
+                </phone:PivotItem>
+                <phone:PivotItem>
+                    <phone:WebBrowser x:Name="Browser_twitter" Margin="-12 -36 -12 0" />
+                </phone:PivotItem>
+            </phone:Pivot>
+        </Grid>
+        <Grid x:Name="progress_bar"
+              Background="#7F000000"
+              Visibility="Collapsed">
+            <telerikPrimitives:RadBusyIndicator x:Name="loading"
+                                                AnimationStyle="AnimationStyle6"
+                                                Content="Please wait..."
+                                                FontSize="25"
+                                                Foreground="White"
+                                                IsRunning="True" />
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4FE9B7F7-D750-489C-8075-8472179EC47C}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AutoDealerz</RootNamespace>
+    <AssemblyName>AutoDealerz</AssemblyName>
+    <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>AutoDealerz_$(Configuration)_$(Platform).xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>AutoDealerz.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\x86\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\x86\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|ARM' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\ARM\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|ARM' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\ARM\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddMoreVehicles.xaml.cs">
+      <DependentUpon>AddMoreVehicles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DealerInfo.xaml.cs">
+      <DependentUpon>DealerInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ForgotPassword.xaml.cs">
+      <DependentUpon>ForgotPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LayoutNews.xaml.cs">
+      <DependentUpon>LayoutNews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LayoutParts.xaml.cs">
+      <DependentUpon>LayoutParts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\layoutSales.xaml.cs">
+      <DependentUpon>layoutSales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LayoutServices.xaml.cs">
+      <DependentUpon>LayoutServices.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MyMessageBox.xaml.cs">
+      <DependentUpon>MyMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Profile.xaml.cs">
+      <DependentUpon>Profile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SellVehicles.xaml.cs">
+      <DependentUpon>SellVehicles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Library\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Library\SplitPanel.cs" />
+    <Compile Include="Library\StringToVisibilityConverter.cs" />
+    <Compile Include="LocalizedStrings.cs" />
+    <Compile Include="Models\APIs.cs" />
+    <Compile Include="Models\BodyModel.cs" />
+    <Compile Include="Models\BranchModel.cs" />
+    <Compile Include="Models\BrandModel.cs" />
+    <Compile Include="Models\CarModel.cs" />
+    <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\CustomerVehicalModel.cs" />
+    <Compile Include="Models\DealCountModel.cs" />
+    <Compile Include="Models\DealerModel.cs" />
+    <Compile Include="Models\EmployeeModel.cs" />
+    <Compile Include="Models\FeedBackModel.cs" />
+    <Compile Include="Models\ListBodyType.cs" />
+    <Compile Include="Models\ListBranchModel.cs" />
+    <Compile Include="Models\ListBrandModel.cs" />
+    <Compile Include="Models\ListCityModel.cs" />
+    <Compile Include="Models\ListCityService.cs" />
+    <Compile Include="Models\ListCountryModel.cs" />
+    <Compile Include="Models\ListCustomerVehicle.cs" />
+    <Compile Include="Models\ListModelModel.cs" />
+    <Compile Include="Models\ListPriceModel.cs" />
+    <Compile Include="Models\ListServiceType.cs" />
+    <Compile Include="Models\ListStateModel.cs" />
+    <Compile Include="Models\ListVariantModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ModelModel.cs" />
+    <Compile Include="Models\MyProfileModel.cs" />
+    <Compile Include="Models\MyRequestModel.cs" />
+    <Compile Include="Models\NewCarDetailModel.cs" />
+    <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\NotifiModel.cs" />
+    <Compile Include="Models\OldCarDetailModel.cs" />
+    <Compile Include="Models\PartsRequestModel.cs" />
+    <Compile Include="Models\PricesModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\RoadAsisstModel.cs" />
+    <Compile Include="Models\SendPartsModel.cs" />
+    <Compile Include="Models\SericeRequestModel.cs" />
+    <Compile Include="Models\ServiceCityModel.cs" />
+    <Compile Include="Models\SettingModel.cs" />
+    <Compile Include="Models\SeviceTypeModel.cs" />
+    <Compile Include="Models\StateModel.cs" />
+    <Compile Include="Models\VariantModel.cs" />
+    <Compile Include="Views\DealerInfoDetail.xaml.cs">
+      <DependentUpon>DealerInfoDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InfoScreen.xaml.cs">
+      <DependentUpon>InfoScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListDealPage.xaml.cs">
+      <DependentUpon>ListDealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginScreen.xaml.cs">
+      <DependentUpon>LoginScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewsDetails.xaml.cs">
+      <DependentUpon>NewsDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewsPage.xaml.cs">
+      <DependentUpon>NewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewVehicleDetail.xaml.cs">
+      <DependentUpon>NewVehicleDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewVehicles.xaml.cs">
+      <DependentUpon>NewVehicles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UsedVehicleDetail.xaml.cs">
+      <DependentUpon>UsedVehicleDetail.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="Controls\AddMoreVehicles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DealerInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ForgotPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LayoutNews.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LayoutParts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\layoutSales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LayoutServices.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MyMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Notification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Profile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SellVehicles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DealerInfoDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InfoScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ListDealPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewsDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewVehicleDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewVehicles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UsedVehicleDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\Modern Caveman.otf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\back_btn.png" />
+    <Content Include="Images\branches.png" />
+    <Content Include="Images\brocher.png" />
+    <Content Include="Images\camera.png" />
+    <Content Include="Images\comment_icon.png" />
+    <Content Include="Images\confirm.png" />
+    <Content Include="Images\date_icon.png" />
+    <Content Include="Images\delete_icon.png" />
+    <Content Include="Images\enquiry.png" />
+    <Content Include="Images\language.png" />
+    <Content Include="Images\mileage.png" />
+    <Content Include="Images\news_part.png" />
+    <Content Include="Images\news_sale.png" />
+    <Content Include="Images\news_services.png" />
+    <Content Include="Images\parts.png" />
+    <Content Include="Images\petrol.png" />
+    <Content Include="Images\road_assist.png" />
+    <Content Include="Images\small_default_car.png" />
+    <Content Include="Images\test_drive.png" />
+    <Content Include="Images\time_icon.png" />
+    <Content Include="Images\toggle_off.png" />
+    <Content Include="Images\toggle_on.png" />
+    <Content Include="README_FIRST.txt" />
+    <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Delete.png" />
+    <Content Include="Toolkit.Content\ApplicationBar.Select.png" />
+    <None Include="packages.config" />
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\AlignmentGrid.png" />
+    <Content Include="Assets\ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Tiles\IconicTileSmall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\address_icon.png" />
+    <Content Include="Images\add_more.png" />
+    <Content Include="Images\bg.png" />
+    <Content Include="Images\b_contact.png" />
+    <Content Include="Images\b_email_icon.png" />
+    <Content Include="Images\car_icon.png" />
+    <Content Include="Images\city_icon.png" />
+    <Content Include="Images\dealer_info.png" />
+    <Content Include="Images\help.png" />
+    <Content Include="Images\line.png" />
+    <Content Include="Images\login_password.png" />
+    <Content Include="Images\login_user_icon.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logout.png" />
+    <Content Include="Images\menu_icon.png" />
+    <Content Include="Images\model_icon.png" />
+    <Content Include="Images\model_year_icon.png" />
+    <Content Include="Images\news_icon.png" />
+    <Content Include="Images\notification.png" />
+    <Content Include="Images\parts_icon.png" />
+    <Content Include="Images\password_icon.png" />
+    <Content Include="Images\phone_icon.png" />
+    <Content Include="Images\pin_icon.png" />
+    <Content Include="Images\profile.png" />
+    <Content Include="Images\sale_icon.png" />
+    <Content Include="Images\sell_cars.png" />
+    <Content Include="Images\setting.png" />
+    <Content Include="Images\slider_home.png" />
+    <Content Include="Images\small_logo.png" />
+    <Content Include="Images\splash.png" />
+    <Content Include="Images\state_icon.png" />
+    <Content Include="Images\street_icon.png" />
+    <Content Include="Images\sub_variant_icon.png" />
+    <Content Include="Images\user_icon.png" />
+    <Content Include="Images\variant_icon.png" />
+    <Content Include="Images\vin_no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Coding4Fun.Toolkit.Controls">
+      <HintPath>..\..\..\..\09520210\HD Phim\HDPhim\HDPhim\Bin\Release\Coding4Fun.Toolkit.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.1.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Portable">
+      <HintPath>..\..\..\..\Axem\Funny\Funny\Bin\Release\RestSharp.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\..\..\..\Axem\Funny\Funny\Bin\Release\RestSharp.WindowsPhone.dll</HintPath>
+    </Reference>
+    <Reference Include="SlideView.Library">
+      <HintPath>..\packages\SlideView.1.4.2\lib\wp8\SlideView.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\sl4-windowsphone71\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Primitives, Version=2013.1.219.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Core, Version=2013.1.219.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+</Project>

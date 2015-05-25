@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="AutoDealerz.Controls.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoDealerz.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/bg.png" Stretch="UniformToFill" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0"
+                   Width="400"
+                   Margin="24 36"
+                   Source="/Images/logo.png" />
+            <Border Grid.Row="1"
+                    Width="380"
+                    Height="380"
+                    VerticalAlignment="Top"
+                    BorderBrush="White"
+                    BorderThickness="4"
+                    CornerRadius="200">
+                <Grid>
+                    <Image Width="250"
+                           Height="250"
+                           Source="/Images/line.png" />
+                    <Button x:Name="BT_services"
+                            Width="100"
+                            Height="100"
+                            Margin="24"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            BorderThickness="0"
+                            Click="BT_services_Click"
+                            Style="{StaticResource ButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/car_icon.png" Stretch="Uniform" />
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="BT_part"
+                            Width="80"
+                            Height="80"
+                            Margin="24"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Click="BT_part_Click"
+                            Style="{StaticResource ButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/parts_icon.png" Stretch="Uniform" />
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="BT_new"
+                            Width="70"
+                            Height="70"
+                            Margin="36"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            BorderThickness="0"
+                            Click="BT_new_Click"
+                            Style="{StaticResource ButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/news_icon.png" Stretch="Uniform" />
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="BT_sales"
+                            Width="80"
+                            Height="90"
+                            Margin="24"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            BorderThickness="0"
+                            Click="BT_sales_Click"
+                            Style="{StaticResource ButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Images/sale_icon.png" Stretch="Uniform" />
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+        <local:LayoutServices x:Name="Layout_service" Visibility="Collapsed" />
+        <local:LayoutNews x:Name="layout_news" Visibility="Collapsed" />
+        <local:LayoutParts x:Name="layout_parts" Visibility="Collapsed" />
+        <local:layoutSales x:Name="layout_sales" Visibility="Collapsed" />
+    </Grid>
+</UserControl>

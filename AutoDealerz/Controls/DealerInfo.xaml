@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="AutoDealerz.Controls.DealerInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid x:Name="LayoutRoot" Background="#a0b9c2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Width="160"
+                        Height="120"
+                        VerticalAlignment="Center"
+                        Background="#cccccc">
+                    <Image Source="{Binding d_image}" Stretch="Fill" />
+                </Border>
+                <StackPanel Grid.Column="1" Margin="12 0 0 0">
+                    <TextBlock FontSize="25"
+                               FontWeight="Bold"
+                               Foreground="#222222"
+                               Text="{Binding d_full_name}" />
+                    <TextBlock FontSize="20" TextWrapping="Wrap">
+                        <Run FontWeight="Bold"
+                             Foreground="#222222"
+                             Text="Address: " />
+                        <Run Foreground="#444444" Text="{Binding d_address}" />
+                    </TextBlock>
+                    <TextBlock FontSize="20" TextWrapping="Wrap">
+                        <Run FontWeight="Bold"
+                             Foreground="#222222"
+                             Text="Email id: " />
+                        <Run Foreground="#444444" Text="{Binding d_email}" />
+                    </TextBlock>
+                    <TextBlock FontSize="20" TextWrapping="Wrap">
+                        <Run FontWeight="Bold"
+                             Foreground="#222222"
+                             Text="Contacts: " />
+                        <Run Foreground="#444444" Text="{Binding d_phone_number}" />
+                    </TextBlock>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="1">
+
+                <Border Height="50"
+                        Margin="12"
+                        Background="#405962">
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="25"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               Text="Branches" />
+                </Border>
+            </Grid>
+            <ListBox x:Name="List_branch"
+                     Grid.Row="2"
+                     ItemsSource="{Binding all_branches}"
+                     SelectionChanged="List_branch_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="{Binding ActualWidth, ElementName=List_branch}" Orientation="Vertical">
+                            <Grid Margin="12" Background="#b8cbd1">
+                                <StackPanel Margin="12" Orientation="Vertical">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0"
+                                                    Margin="12 0 0 0"
+                                                    Orientation="Vertical">
+                                            <TextBlock FontSize="20"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="Black"
+                                                       Text="{Binding branch_name}"
+                                                       TextWrapping="Wrap" />
+                                            <TextBlock FontSize="20" TextWrapping="Wrap">
+                                                <Run Foreground="#222222" Text="Address: " />
+                                                <Run Foreground="White" Text="{Binding branch_address}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" TextWrapping="Wrap">
+                                                <Run Foreground="#222222" Text="Timing: " />
+                                                <Run Foreground="White" Text="{Binding branch_working_hours}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" TextWrapping="Wrap">
+                                                <Run Foreground="#222222" Text="Email id: " />
+                                                <Run Foreground="White" Text="{Binding branch_email_id}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20" TextWrapping="Wrap">
+                                                <Run Foreground="#222222" Text="Contact: " />
+                                                <Run Foreground="White" Text="{Binding branch_contact_no}" />
+                                            </TextBlock>
+
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="1"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="30"
+                                                   Foreground="Black"
+                                                   Text="&gt;" />
+                                    </Grid>
+
+                                </StackPanel>
+                            </Grid>
+                            <Rectangle Height="1" Fill="White" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+        </Grid>
+        <Grid x:Name="progress_bar"
+              Background="#7F000000"
+              Visibility="Collapsed">
+            <telerikPrimitives:RadBusyIndicator x:Name="loading"
+                                                AnimationStyle="AnimationStyle6"
+                                                Content="Please wait..."
+                                                FontSize="25"
+                                                Foreground="White"
+                                                IsRunning="True" />
+        </Grid>
+    </Grid>
+</UserControl>

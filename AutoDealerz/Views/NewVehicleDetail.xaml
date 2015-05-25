@@ -1,0 +1,1337 @@
+﻿<phone:PhoneApplicationPage x:Class="AutoDealerz.Views.NewVehicleDetail"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+                            xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            shell:SystemTray.Opacity="0.001"
+                            mc:Ignorable="d">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="DatePickerControlTemplate" TargetType="toolkit:DatePicker">
+            <StackPanel>
+                <ContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{StaticResource PhoneSubtleBrush}" />
+                <Button x:Name="DateTimeButton"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0"
+                        Content="{TemplateBinding ValueString}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        Foreground="{TemplateBinding Foreground}" />
+            </StackPanel>
+        </ControlTemplate>
+        <ControlTemplate x:Key="TimePickerControlTemplate" TargetType="toolkit:TimePicker">
+            <StackPanel>
+                <ContentControl HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{StaticResource PhoneSubtleBrush}" />
+                <Button x:Name="DateTimeButton"
+                        Height="72"
+                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="0"
+                        Content="{TemplateBinding ValueString}"
+                        FontFamily="{TemplateBinding FontFamily}"
+                        Foreground="{TemplateBinding Foreground}" />
+            </StackPanel>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="LayoutRoot" Background="#a0b9c2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0"
+                  Height="90"
+                  Background="#222222">
+                <Button x:Name="BT_back" Click="BT_back_Click"
+                        Width="30"
+                        Height="30"
+                        Margin="24 12"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        BorderThickness="0"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/back_btn.png" />
+                    </Button.Background>
+                </Button>
+
+                <TextBlock x:Name="TB_title"
+                           Margin="0 12"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontFamily="/Fonts/Modern Caveman.otf#modern caveman"
+                           FontSize="25"
+                           Foreground="White"
+                           Text="NEW VEHICLES" />
+            </Grid>
+            <ScrollViewer Grid.Row="1">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock x:Name="TB_variant_name"
+                               Margin="24 12"
+                               HorizontalAlignment="Center"
+                               FontSize="30"
+                               FontWeight="SemiBold"
+                               Foreground="Black"
+                               TextWrapping="Wrap" />
+                    <Border Width="400"
+                            Height="200"
+                            Margin="24 0"
+                            BorderBrush="#7F000000"
+                            BorderThickness="2"
+                            CornerRadius="5">
+                        <Border.Background>
+                            <ImageBrush ImageSource="/Images/small_default_car.png" Stretch="UniformToFill" />
+                        </Border.Background>
+                        <Image Margin="3"
+                               Source="{Binding car_image}"
+                               Stretch="Fill" />
+                    </Border>
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Foreground="#FF607D87"
+                               Text="{Binding price}"
+                               TextWrapping="Wrap" />
+                    <TextBlock HorizontalAlignment="Center"
+                               FontSize="18"
+                               Foreground="#444444"
+                               Text="ex showroom price"
+                               TextWrapping="Wrap" />
+
+                    <Border Height="50"
+                            Margin="0 12"
+                            Background="#405962">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="25"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Text="Overview" />
+                    </Border>
+                    <Grid Margin="12 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Fuel Type" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Sub Variant" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Engine (cc)" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Month-Year" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Max Power" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Max Torque" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Transmission" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Seating" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Vin No." />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Milage-City" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Milage-Hightway" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Fuel Tank Capacity" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Engine Description" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Color (Exterior,interior)" />
+
+                            </ListBoxItem>
+                        </ListBox>
+                        <ListBox Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding fuel_type}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding subvariant}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding upto_engine_cc}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding month_year}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding max_power}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding max_torque}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding transmission}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding seating}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding vin_no}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding mileage_city}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding mileage_highway}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding fuel_tank_capacity}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding engine_description}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           TextWrapping="Wrap">
+                                    <Run Text="{Binding colour_exterior}" />
+                                    <Run Text=", " />
+                                    <Run Text="{Binding colour_interior}" />
+                                </TextBlock>
+                            </ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                    <Border Height="50"
+                            Margin="12"
+                            Background="#405962">
+                        <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="25"
+                                   FontWeight="SemiBold"
+                                   Foreground="White"
+                                   Text="Standerd Faetures" />
+                    </Border>
+                    <Grid Margin="12 0 12 24">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ListBox Grid.Column="0" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Antilock Breaking System" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Break Assist" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Central Locking" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Power Door" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Child Lock" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Passenger Air Bag" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Halogen Head Lamps" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Door Ajar Warning" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Adjustable Seats" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Engine Immobilizer" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Rear Seat Belts" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="Crash Senser" />
+
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="EBD" />
+
+                            </ListBoxItem>
+
+                        </ListBox>
+                        <ListBox Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding antilock_braking_system}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding brake_assist}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding central_locking}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding power_door}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding child_lock}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding passenger_air_bag}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding halogen_head_lamps}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding door_ajar_warning}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding adjustable_seats}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding engine_immobilizer}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding rear_seat_belts}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding crash_senser}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                            <ListBoxItem>
+                                <TextBlock Grid.Column="1"
+                                           Height="30"
+                                           VerticalAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding ebd}"
+                                           TextWrapping="Wrap" />
+                            </ListBoxItem>
+                        </ListBox>
+                    </Grid>
+
+                </StackPanel>
+            </ScrollViewer>
+            <Grid Grid.Row="2" Background="#FF5E828F">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button x:Name="BT_branches"
+                        Grid.Column="0"
+                        Width="60"
+                        Height="40"
+                        Margin="12"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        Click="BT_branches_Click"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/branches.png" />
+                    </Button.Background>
+                </Button>
+                <Rectangle Grid.Column="1"
+                           Width="1"
+                           Height="40"
+                           VerticalAlignment="Center"
+                           Fill="White" />
+                <Button x:Name="BT_test_dive"
+                        Grid.Column="2"
+                        Width="75"
+                        Height="40"
+                        Margin="12"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        Click="BT_test_dive_Click"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/test_drive.png" />
+                    </Button.Background>
+                </Button>
+                <Rectangle Grid.Column="3"
+                           Width="1"
+                           Height="40"
+                           VerticalAlignment="Center"
+                           Fill="White" />
+                <Button x:Name="BT_brochure"
+                        Grid.Column="4"
+                        Width="65"
+                        Height="40"
+                        Margin="12"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        Click="BT_brochure_Click"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/brocher.png" />
+                    </Button.Background>
+                </Button>
+                <Rectangle Grid.Column="5"
+                           Width="1"
+                           Height="40"
+                           VerticalAlignment="Center"
+                           Fill="White" />
+                <Button x:Name="BT_enquiry"
+                        Grid.Column="6"
+                        Width="60"
+                        Height="40"
+                        Margin="12"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        BorderThickness="0"
+                        Click="BT_enquiry_Click"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/enquiry.png" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <Grid x:Name="Layout_braches"
+              Background="#66000000"
+              Visibility="Collapsed">
+
+            <Border x:Name="MSB"
+                    Width="400"
+                    Height="Auto"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#FFE6E6E6">
+
+                <StackPanel Orientation="Vertical">
+
+                    <Border Height="50"
+                            Background="#FFE6E6E6"
+                            BorderBrush="#FF00ADEF"
+                            BorderThickness="0,0,0,2">
+                        <TextBlock Margin="12 0 0 0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontSize="25"
+                                   Foreground="#00adef"
+                                   Text="Available Branches" />
+                    </Border>
+                    <ListBox x:Name="List_available_brach"
+                             MaxHeight="300"
+                             Background="White">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Background="White" Orientation="Vertical">
+                                    <TextBlock Margin="12 0"
+                                               FontSize="25"
+                                               FontWeight="SemiBold"
+                                               Foreground="Black"
+                                               Text="{Binding branch_name}" />
+                                    <TextBlock Margin="12 0" FontSize="20">
+                                        <Run FontWeight="SemiBold"
+                                             Foreground="Black"
+                                             Text="Address: " />
+                                        <Run Foreground="#222222" Text="{Binding branch_address}" />
+                                    </TextBlock>
+                                    <TextBlock Margin="12 0"
+                                               FontSize="20"
+                                               TextWrapping="Wrap">
+                                        <Run FontWeight="SemiBold"
+                                             Foreground="Black"
+                                             Text="Timing: " />
+                                        <Run Foreground="#222222" Text="{Binding branch_working_hours}" />
+                                    </TextBlock>
+                                    <TextBlock Margin="12 0" FontSize="20">
+                                        <Run FontWeight="SemiBold"
+                                             Foreground="Black"
+                                             Text="Email id: " />
+                                        <Run Foreground="#222222" Text="{Binding branch_email_id}" />
+                                    </TextBlock>
+                                    <TextBlock Margin="12 0 12 12" FontSize="20">
+                                        <Run FontWeight="SemiBold"
+                                             Foreground="Black"
+                                             Text="Contact: " />
+                                        <Run Foreground="#222222" Text="{Binding branch_contact_no}" />
+                                    </TextBlock>
+                                    <Rectangle Width="400"
+                                               Height="1"
+                                               Fill="Black" />
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        
+        
+        
+        
+        
+        
+        <Grid x:Name="Layout_test_drive"
+              Background="#66000000"
+              Visibility="Collapsed">
+
+            <Grid Width="400"
+                  VerticalAlignment="Center"
+                  Background="#a0b9c2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Height="60"
+                      Background="#222222">
+
+
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               FontFamily="/Fonts/Modern Caveman.otf#modern caveman"
+                               FontSize="25"
+                               Foreground="White"
+                               Text="TEST DRIVE" />
+                </Grid>
+                <StackPanel Grid.Row="1"
+                            Margin="24 0"
+                            Orientation="Vertical">
+                    <StackPanel Grid.Column="0" Orientation="Horizontal">
+                        <Image Width="25"
+                               Height="25"
+                               Source="/Images/date_icon.png" />
+                        <toolkit:DatePicker x:Name="CB_date"
+                                            Margin="-6 0 0 0"
+                                            Template="{StaticResource DatePickerControlTemplate}" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Image Width="25"
+                               Height="25"
+                               Source="/Images/time_icon.png" />
+                        <toolkit:TimePicker x:Name="CB_time"
+                                            Margin="-6 0 0 0"
+                                            Template="{StaticResource TimePickerControlTemplate}" />
+                    </StackPanel>
+                    <TextBlock Margin="0 12 0 0"
+                               FontSize="20"
+                               Foreground="White"
+                               Text="Select branch:" />
+                    <Border Background="#FFB3C7CE"
+                            BorderBrush="#7F000000"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <toolkit:ListPicker x:Name="CB_branch_name"
+                                                Grid.Column="1"
+                                                Margin="0"
+                                                BorderThickness="0"
+                                                ExpansionMode="FullScreenOnly"
+                                                FullModeHeader="select branch:"
+                                                Template="{StaticResource ListPickerTemplate}">
+                                <toolkit:ListPicker.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="25"
+                                                   Foreground="Black"
+                                                   Text="{Binding branch_address}" />
+                                    </DataTemplate>
+                                </toolkit:ListPicker.ItemTemplate>
+                                <toolkit:ListPicker.FullModeItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0 12" Orientation="Vertical">
+                                            <TextBlock FontSize="35"
+                                                       Foreground="White"
+                                                       Text="{Binding branch_name}" />
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Address: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_address}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Timing: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_working_hours}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Email id: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_email_id}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Contact: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_contact_no}" />
+                                            </TextBlock>
+                                            <Rectangle Height="1"
+                                                       Margin="0 12 0 0"
+                                                       Fill="White" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+                                </toolkit:ListPicker.FullModeItemTemplate>
+                            </toolkit:ListPicker>
+                            <telerikPrimitives:RadBusyIndicator x:Name="loading_brand_name"
+                                                                Grid.Column="1"
+                                                                Height="50"
+                                                                Margin="6 -3 6 3"
+                                                                HorizontalAlignment="Right"
+                                                                AnimationStyle="AnimationStyle7"
+                                                                Content=""
+                                                                FontSize="25"
+                                                                Foreground="White"
+                                                                IsRunning="True"
+                                                                Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <Button x:Name="BT_test_drive_send" Click="BT_test_drive_send_Click"
+                            Margin="0 24"
+                            Background="#5d7e8a"
+                            Content="SEND REQUEST"
+                            FontSize="25"
+                            Foreground="White"
+                            Style="{StaticResource ButtonStyle_blue}" />
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <Grid x:Name="Layout_brochure"
+              Background="#66000000"
+              Visibility="Collapsed">
+
+            <Grid Width="400"
+                  VerticalAlignment="Center"
+                  Background="#a0b9c2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Height="60"
+                      Background="#222222">
+
+
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               FontFamily="/Fonts/Modern Caveman.otf#modern caveman"
+                               FontSize="25"
+                               Foreground="White"
+                               Text="ASK FOR BROCHURE" />
+                </Grid>
+                <StackPanel Grid.Row="1"
+                            Margin="24 0"
+                            Orientation="Vertical">
+
+
+                    <TextBlock Margin="0 12 0 0"
+                               FontSize="20"
+                               Foreground="White"
+                               Text="Select branch:" />
+                    <Border Background="#FFB3C7CE"
+                            BorderBrush="#7F000000"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <toolkit:ListPicker x:Name="CB_branch_brochure"
+                                                Grid.Column="1"
+                                                Margin="0"
+                                                BorderThickness="0"
+                                                ExpansionMode="FullScreenOnly"
+                                                FullModeHeader="select branch:"
+                                                Template="{StaticResource ListPickerTemplate}">
+                                <toolkit:ListPicker.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="25"
+                                                   Foreground="Black"
+                                                   Text="{Binding branch_address}" />
+                                    </DataTemplate>
+                                </toolkit:ListPicker.ItemTemplate>
+                                <toolkit:ListPicker.FullModeItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0 12" Orientation="Vertical">
+                                            <TextBlock FontSize="35"
+                                                       Foreground="White"
+                                                       Text="{Binding branch_name}" />
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Address: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_address}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Timing: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_working_hours}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Email id: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_email_id}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Contact: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_contact_no}" />
+                                            </TextBlock>
+                                            <Rectangle Height="1"
+                                                       Margin="0 12 0 0"
+                                                       Fill="White" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+                                </toolkit:ListPicker.FullModeItemTemplate>
+                            </toolkit:ListPicker>
+                            <telerikPrimitives:RadBusyIndicator x:Name="loading_brand_brochure"
+                                                                Grid.Column="1"
+                                                                Height="50"
+                                                                Margin="6 -3 6 3"
+                                                                HorizontalAlignment="Right"
+                                                                AnimationStyle="AnimationStyle7"
+                                                                Content=""
+                                                                FontSize="25"
+                                                                Foreground="White"
+                                                                IsRunning="True"
+                                                                Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <Grid Margin="0 24" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BT_brochure_send" Click="BT_brochure_send_Click"
+                                Grid.Column="0"
+                                Margin="0 0 12 0"
+                                Background="#5d7e8a"
+                                Content="SEND"
+                                FontSize="25"
+                                Foreground="White"
+                                Style="{StaticResource ButtonStyle_blue}" />
+                        <Button x:Name="BT_brochure_cancel" Click="BT_brochure_cancel_Click"
+                                Grid.Column="1"
+                                Margin="12 0 0 0"
+                                Background="#5d7e8a"
+                                Content="CANCEL"
+                                FontSize="25"
+                                Foreground="White"
+                                Style="{StaticResource ButtonStyle_blue}" />
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <Grid x:Name="Layout_enquiry"
+              Background="#66000000"
+              Visibility="Collapsed">
+
+            <Grid Width="400"
+                  VerticalAlignment="Center"
+                  Background="#a0b9c2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"
+                      Height="60"
+                      Background="#222222">
+
+
+                    <TextBlock Margin="0 12"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Bottom"
+                               FontFamily="/Fonts/Modern Caveman.otf#modern caveman"
+                               FontSize="25"
+                               Foreground="White"
+                               Text="ENQUIRY" />
+                </Grid>
+                <StackPanel Grid.Row="1"
+                            Margin="24 0"
+                            Orientation="Vertical">
+                    <Border Margin="0 12 0 24"
+                            Background="#FFB3C7CE"
+                            BorderBrush="#7F000000"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                        <TextBox x:Name="TB_equiry_title" GotFocus="TB_equiry_title_GotFocus"
+                                 LostFocus="TB_equiry_title_LostFocus"
+                                 Height="50"
+                                 FontSize="25" KeyDown="TB_equiry_title_KeyDown"
+                                 Foreground="White"
+                                 Style="{StaticResource TB_Style_InfoScreen}"
+                                 Text="Enquiry Title" />
+                    </Border>
+                    <Border Margin="0"
+                            Background="#FFB3C7CE"
+                            BorderBrush="#7F000000"
+                            BorderThickness="1"
+                            CornerRadius="5">
+
+                        <Grid Margin="12 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Width="25"
+                                   Height="25"
+                                   Margin="0 12"
+                                   VerticalAlignment="Top"
+                                   Source="/Images/comment_icon.png" />
+                            <TextBox x:Name="TB_comment_feed" GotFocus="TB_comment_feed_GotFocus"
+                                     LostFocus="TB_comment_feed_LostFocus" KeyDown="TB_comment_feed_KeyDown"
+                                     Grid.Column="1"
+                                     Height="120"
+                                     HorizontalAlignment="Stretch"
+                                     AcceptsReturn="True"
+                                     FontSize="20"
+                                     Foreground="White"
+                                     Style="{StaticResource TB_Style_InfoScreen}"
+                                     Text="Description"
+                                     TextWrapping="Wrap" />
+                        </Grid>
+
+
+                    </Border>
+
+                    <TextBlock Margin="0 12 0 0"
+                               FontSize="20"
+                               Foreground="White"
+                               Text="Select branch:" />
+                    <Border Background="#FFB3C7CE"
+                            BorderBrush="#7F000000"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+
+
+                            <toolkit:ListPicker x:Name="CB_branch_enquiry"
+                                                Grid.Column="1"
+                                                Margin="0"
+                                                BorderThickness="0"
+                                                ExpansionMode="FullScreenOnly"
+                                                FullModeHeader="select branch:"
+                                                Template="{StaticResource ListPickerTemplate}">
+                                <toolkit:ListPicker.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock FontSize="25"
+                                                   Foreground="Black"
+                                                   Text="{Binding branch_address}" />
+                                    </DataTemplate>
+                                </toolkit:ListPicker.ItemTemplate>
+                                <toolkit:ListPicker.FullModeItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0 12" Orientation="Vertical">
+                                            <TextBlock FontSize="35"
+                                                       Foreground="White"
+                                                       Text="{Binding branch_name}" />
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Address: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_address}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Timing: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_working_hours}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Email id: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_email_id}" />
+                                            </TextBlock>
+                                            <TextBlock FontSize="20"
+                                                       Foreground="White"
+                                                       TextWrapping="Wrap">
+                                                <Run FontWeight="SemiBold"
+                                                     Foreground="White"
+                                                     Text="Contact: " />
+                                                <Run Foreground="#dddddd" Text="{Binding branch_contact_no}" />
+                                            </TextBlock>
+                                            <Rectangle Height="1"
+                                                       Margin="0 12 0 0"
+                                                       Fill="White" />
+                                        </StackPanel>
+
+                                    </DataTemplate>
+                                </toolkit:ListPicker.FullModeItemTemplate>
+                            </toolkit:ListPicker>
+                            <telerikPrimitives:RadBusyIndicator x:Name="loading_brand_enquiry"
+                                                                Grid.Column="1"
+                                                                Height="50"
+                                                                Margin="6 -3 6 3"
+                                                                HorizontalAlignment="Right"
+                                                                AnimationStyle="AnimationStyle7"
+                                                                Content=""
+                                                                FontSize="25"
+                                                                Foreground="White"
+                                                                IsRunning="True"
+                                                                Visibility="Collapsed" />
+                        </Grid>
+                    </Border>
+                    <Grid Margin="0 24" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="BT_enquiry_send" Click="BT_enquiry_send_Click"
+                                Grid.Column="0"
+                                Margin="0 0 12 0"
+                                Background="#5d7e8a"
+                                Content="SEND"
+                                FontSize="25"
+                                Foreground="White"
+                                Style="{StaticResource ButtonStyle_blue}" />
+                        <Button x:Name="BT_enquiry_cancel" Click="BT_enquiry_cancel_Click"
+                                Grid.Column="1"
+                                Margin="12 0 0 0"
+                                Background="#5d7e8a"
+                                Content="CANCEL"
+                                FontSize="25"
+                                Foreground="White"
+                                Style="{StaticResource ButtonStyle_blue}" />
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        <Grid x:Name="progress_bar"
+              Background="#7F000000"
+              Visibility="Collapsed">
+            <telerikPrimitives:RadBusyIndicator x:Name="loading"
+                                                AnimationStyle="AnimationStyle6"
+                                                Content="Please wait..."
+                                                FontSize="25"
+                                                Foreground="White"
+                                                IsRunning="True" />
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

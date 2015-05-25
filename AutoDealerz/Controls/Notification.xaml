@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="AutoDealerz.Controls.Notification"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ValueConverters="clr-namespace:NhacCuaTui.SupportListview.ValueConverters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:AutoDealerz.Controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+             FontFamily="{StaticResource PhoneFontFamilyNormal}"
+             FontSize="{StaticResource PhoneFontSizeNormal}"
+             Foreground="{StaticResource PhoneForegroundBrush}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <ValueConverters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot" Background="#a0b9c2">
+
+
+        <ListBox x:Name="List_notifi">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Width="{Binding ActualWidth, ElementName=List_notifi}" Orientation="Vertical">
+                        <Grid Margin="12" Background="#b8cbd1">
+
+
+
+                            <StackPanel Margin="12" Orientation="Vertical">
+                                <TextBlock FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Foreground="Black"
+                                           Text="{Binding notification_msg}"
+                                           TextWrapping="Wrap" />
+                                <TextBlock HorizontalAlignment="Right"
+                                           FontSize="20"
+                                           Foreground="#444444"
+                                           Text="{Binding notification_datetime}"
+                                           TextWrapping="Wrap" />
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="BT_accept"
+                                            Width="50"
+                                            Height="50"
+                                            Margin="0 -6"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            BorderThickness="0"
+                                            Click="BT_accept_Click"
+                                            Style="{StaticResource ButtonStyle}"
+                                            Tag="{Binding notification_id}"
+                                            Visibility="{Binding show_accept,
+                                                                 Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/Images/confirm.png" />
+                                        </Button.Background>
+                                    </Button>
+                                    <Button x:Name="BT_delete"
+                                            Width="50"
+                                            Height="50"
+                                            Margin="0 -6"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            BorderThickness="0"
+                                            Click="BT_delete_Click"
+                                            Style="{StaticResource ButtonStyle}"
+                                            Tag="{Binding notification_id}">
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="/Images/delete_icon.png" />
+                                        </Button.Background>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+
+
+
+                        </Grid>
+                        <Rectangle Height="1" Fill="Black" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <local:MyMessageBox x:Name="my_message" />
+        <Grid x:Name="progress_bar"
+              Background="#7F000000"
+              Visibility="Collapsed">
+            <telerikPrimitives:RadBusyIndicator x:Name="loading"
+                                                AnimationStyle="AnimationStyle6"
+                                                Content="Please wait..."
+                                                FontSize="25"
+                                                Foreground="White"
+                                                IsRunning="True" />
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,325 @@
+﻿<phone:PhoneApplicationPage x:Class="AutoDealerz.MainPage"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:controls="clr-namespace:SlideView.Library;assembly=SlideView.Library"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:local="clr-namespace:AutoDealerz.Controls"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            shell:SystemTray.Opacity="0.001"
+                            mc:Ignorable="d">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="ListBoxItemStyleMenu" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border x:Name="LayoutRoot"
+                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <VisualStateManager.VisualStateGroups>
+
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(Border.Background)">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#FF888888" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LayoutRoot" Storyboard.TargetProperty="(Border.Background)">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#FF888888" />
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentControl x:Name="ContentContainer"
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+    <Grid>
+        <Grid x:Name="LayoutRoot">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/bg.png" Stretch="Fill" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0" Height="90">
+                <Button x:Name="BT_menu"
+                        Width="40"
+                        Height="30"
+                        Margin="24 12"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        BorderThickness="0"
+                        Click="BT_menu_Click"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/menu_icon.png" />
+                    </Button.Background>
+                </Button>
+                <Button x:Name="BT_call" Click="BT_call_Click"
+                        Width="40"
+                        Height="40"
+                        Margin="24 12"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        BorderThickness="0"
+                        Style="{StaticResource ButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Images/phone_icon.png" />
+                    </Button.Background>
+                </Button>
+                <TextBlock x:Name="TB_title"
+                           Margin="0 12"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Bottom"
+                           FontFamily="/Fonts/Modern Caveman.otf#modern caveman"
+                           FontSize="25"
+                           Foreground="White"
+                           Text="" />
+            </Grid>
+            <controls:SlideView x:Name="Main_slide_view"
+                                Grid.Row="1"
+                                SelectedIndex="1">
+                <Grid x:Name="Left_menu"
+                      Width="350"
+                      Background="#333333">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0"
+                           Width="180"
+                           Margin="12"
+                           HorizontalAlignment="Center"
+                           Source="/Images/small_logo.png" />
+                    <ListBox x:Name="List_mainmenu"
+                             Grid.Row="1"
+                             ItemContainerStyle="{StaticResource ListBoxItemStyleMenu}"
+                             SelectionChanged="List_mainmenu_SelectionChanged">
+                        <ListBoxItem Tap="Home_tap">
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/slider_home.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="HOME" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/profile.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="PROFILE" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/dealer_info.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="DEALER INFO" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/sell_cars.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="SELL VEHICLES" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/add_more.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="ADD MORE VEHICLES" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/notification.png" />
+                                <TextBlock Width="200"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="NOTIFICATIONS" />
+                                <Border x:Name="border_number_nor"
+                                        Width="Auto"
+                                        Height="40"
+                                        Background="#888888"
+                                        CornerRadius="5"
+                                        Visibility="Collapsed">
+                                    <TextBlock x:Name="tb_number_nor"
+                                               Margin="12 0"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               FontSize="25"
+                                               Foreground="#222222"
+                                               Text="1" />
+                                </Border>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/help.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="HELP" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/setting.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="SETTINGS" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/login_password.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="CHANGE PASSWORD" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Width="{Binding ActualWidth, ElementName=Left_menu}" Orientation="Horizontal">
+                                <Image Width="35"
+                                       Height="35"
+                                       Margin="24 0"
+                                       Source="/Images/logout.png" />
+                                <TextBlock Width="260"
+                                           Margin="0 30"
+                                           FontSize="20"
+                                           FontWeight="Bold"
+                                           Foreground="#cccccc"
+                                           Text="LOGOUT" />
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+                <Grid x:Name="Layout_content" Background="Black">
+                    <local:Home x:Name="layout_home" />
+                    <local:Profile x:Name="layout_profile" />
+                    <local:DealerInfo x:Name="layout_dialer" />
+                    <local:SellVehicles x:Name="layout_sell" />
+                    <local:AddMoreVehicles x:Name="layout_addmore_vehicles" />
+                    <local:Notification x:Name="layout_notification" />
+                    <local:Help x:Name="layout_help" />
+                    <local:Setting x:Name="layout_setting" />
+                    <local:ChangePassword x:Name="layout_change_pass" />
+                </Grid>
+            </controls:SlideView>
+            <Grid x:Name="progress_bar"
+                  Grid.Row="1"
+                  Background="#7F000000"
+                  Visibility="Collapsed">
+                <telerikPrimitives:RadBusyIndicator x:Name="loading"
+                                                    AnimationStyle="AnimationStyle6"
+                                                    Content="Please wait..."
+                                                    FontSize="25"
+                                                    Foreground="White"
+                                                    IsRunning="True" />
+            </Grid>
+        </Grid>
+        <local:MyMessageBox x:Name="my_message" />
+    </Grid>
+</phone:PhoneApplicationPage>
